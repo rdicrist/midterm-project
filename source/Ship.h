@@ -44,7 +44,7 @@ class Ship{
   } GLvars;
   
   
-  mat2 RotateZ( const GLfloat theta ){
+  mat2 RotateZ2D( const GLfloat theta ){
     GLfloat angle = DegreesToRadians * theta;
     mat2 c;
     c[0][0] = c[1][1] = cos(angle);
@@ -61,8 +61,8 @@ public:
   inline void start_thruster(){ state.thruster_on= true;}
   inline void stop_thruster() { state.thruster_on= false;}
 
-  inline void rotateLeft() {  state.angle-=_ROT;   state.pointing =  RotateZ(state.angle) * vec2(0.0,-1.0);}
-  inline void rotateRight(){  state.angle+=_ROT;   state.pointing =  RotateZ(state.angle) * vec2(0.0,-1.0);}
+  inline void rotateLeft() {  state.angle-=_ROT;   state.pointing =  RotateZ2D(state.angle) * vec2(0.0,-1.0);}
+  inline void rotateRight(){  state.angle+=_ROT;   state.pointing =  RotateZ2D(state.angle) * vec2(0.0,-1.0);}
     
   void update_state();
   
