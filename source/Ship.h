@@ -11,6 +11,8 @@
 
 #include "common.h"
 
+#include "Bullets.cpp"
+
 #define _MAX_SPEED 10
 #define _DAMPING 0.98
 #define _ACC 3
@@ -18,8 +20,8 @@
 
 class Ship{
 
-  vec2 ship_vert[6];
-  vec3 ship_color[6];
+  vec2 ship_vert[9];
+  vec3 ship_color[9];
   
   float width, height;
   
@@ -28,7 +30,7 @@ class Ship{
   struct {
     vec2 cur_location;
     vec2 pointing;
-    vec2 move;
+    vec2 move; //velocity 
     bool thruster_on;
     float angle;
   } state;
@@ -61,8 +63,8 @@ public:
   inline void start_thruster(){ state.thruster_on= true;}
   inline void stop_thruster() { state.thruster_on= false;}
 
-  inline void rotateLeft() {  state.angle-=_ROT;   state.pointing =  RotateZ2D(state.angle) * vec2(0.0,-1.0);}
-  inline void rotateRight(){  state.angle+=_ROT;   state.pointing =  RotateZ2D(state.angle) * vec2(0.0,-1.0);}
+  inline void rotateLeft() {  state.angle-=_ROT;   state.pointing =  RotateZ2D(state.angle) * vec2(0.0,1.0);}
+  inline void rotateRight(){  state.angle+=_ROT;   state.pointing =  RotateZ2D(state.angle) * vec2(0.0,1.0);}
     
   void update_state();
   
@@ -74,6 +76,10 @@ public:
     width  = w/2;
     height = h/2;
   }
+    
+    void step (float dt);
+    
+    //Bullets fire ();
 };
 
 

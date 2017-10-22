@@ -27,6 +27,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
   }
   if (key == GLFW_KEY_Z && action == GLFW_PRESS){
     //!!!!!!!!Fire bullet
+      //ship.fire();
   }
 }
 
@@ -79,13 +80,15 @@ int main(void)
   
   while (!glfwWindowShouldClose(window)){
     
-    int width, height;
+      int width, height;
+
+      
     glfwGetFramebufferSize(window, &width, &height);
     glViewport(0, 0, width, height);
     
     //!!!!!!!!Pick a projection that makes the most sense to you
-    ship.set_extents(width, height);
-    mat4 proj = Ortho2D(-width/2, width/2, height/2, -height/2);
+    ship.set_extents(20, 20);
+    mat4 proj = Ortho2D(-20/2, 20/2, 20/2, -20/2);
     
     animate();
     

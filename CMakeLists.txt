@@ -37,6 +37,9 @@ add_executable(asteroids WIN32 MACOSX_BUNDLE
 	source/Ship.h 
 	shaders/fshader_Ship.glsl
 	shaders/vshader_Ship.glsl)
+
+    source/Bullet.h
+    source/Bullets.cpp
 	
 #Windows cleanup
 if (MSVC)
