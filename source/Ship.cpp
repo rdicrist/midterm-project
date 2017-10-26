@@ -7,7 +7,7 @@
 //
 
 #include "common.h"
-#include "Bullets.cpp"
+
 
 Ship::Ship(){
   //!!!!!!!!Your initial state might be different depending on how you
@@ -24,7 +24,7 @@ void Ship::update_state(){
   if(state.thruster_on){
     //!!!!!!!!Accelerate if the thruster is on
     //!!!!!!!!Clamp acceleration at some maximum value
-      state.move += 0.3*state.pointing;
+      state.move += 0.2*state.pointing;
       
       if(length(state.move) > 2.0) {
           state.move = normalize(state.move);
@@ -165,9 +165,12 @@ void Ship::draw(mat4 proj){
 
 }
 
-/*Bullets Ship::fire(){
-    //create a bullet here
-    Bullets bullet = *new Bullets (state.cur_location, state.move);
-    return bullet;
-}*/
+Bullets::Bullet *Ship::fire(){
+
+    return new Bullets::Bullet(state.cur_location, state.pointing);
+    
+
+  // Bullets bullet = *new Bullet (state.cur_location, state.move);
+
+}
 

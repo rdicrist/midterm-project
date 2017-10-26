@@ -10,8 +10,7 @@
 #define __Asteroids__Ship__
 
 #include "common.h"
-
-#include "Bullets.cpp"
+ 
 
 #define _MAX_SPEED 10
 #define _DAMPING 0.98
@@ -79,7 +78,9 @@ public:
     
     void step (float dt);
     
-    //Bullets fire ();
+    Bullets::Bullet * fire();
+    
+
 };
 
 
