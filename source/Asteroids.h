@@ -18,7 +18,7 @@ class Asteroids {
 public:
     class Asteroid {
         vec2 ast_vert[12] = {vec2(1.32,-1.18), vec2(2.50,-1.12), vec2(3.27,1.02), vec2(1.38,1.35), vec2(2.42,2.51), vec2(-0.04,3.04), vec2(-1.74,1.26), vec2(-2.70,1.35), vec2(-3.05,-0.08), vec2(-1.78,-0.83), vec2(-2.75,-2.18), vec2(-0.03,-2.43)};
-        vec3 ast_color[12] = {vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1)};
+        vec3 ast_color[12] = {vec3(.75,.75,.75), vec3(.83,.83,.83), vec3(.83,.83,.83), vec3(.83,.83,.83), vec3(.83,.83,.83), vec3(.83,.83,.83), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1), vec3(1,1,1)};
     public:
         vec2 loc;
         vec2 vel;
@@ -57,13 +57,14 @@ public:
     void step(float width, float height);
     void draw(mat4 proj);
     void update_state();
-    void split(mat4 proj);
+    bool split( vec2 point);
     Asteroids::Asteroid createNew();
     
     //
-    void checkIfHit(vec2 point);
+    void deleteIfHit(vec2 point);
     
-    int getLength();
+    
+    void checkCollideShip(Ship * s);
     
     
     

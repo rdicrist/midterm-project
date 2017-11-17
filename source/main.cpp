@@ -20,6 +20,15 @@ static Asteroids::Asteroid * createNew(){
     return a ;
 }
 
+static void checkCollidBulletAsteroid(){
+    for(unsigned int j=0; j < bullets->bullets.size(); j++){
+        if(asteroids->split(bullets->bullets[j]->loc)){
+            bullets->bullets[j]->hit = true;
+        }
+    }
+    bullets->clean_bullets();
+}
+
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -37,17 +46,11 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
       ship.stop_thruster();
     }
   }
-  if (key == GLFW_KEY_Z && action == GLFW_PRESS){
+  if (key == GLFW_KEY_UP && action == GLFW_PRESS){
     //!!!!!!!!Fire bullet
       bullets->bullets.push_back(ship.fire());
   }
-if (key == GLFW_KEY_X && action == GLFW_PRESS){
-    //asteroids->asteroids.push_back(createNew());
-}
-if (key == GLFW_KEY_C && action == GLFW_PRESS){
-    //mat4 proj = Ortho2D(-20, 20, 20, -20);
-    //asteroids->split(proj);
-}
+
 }
 
 void init(){
@@ -144,9 +147,10 @@ int main(void)
       
       
       bullets->draw(proj);
-      vec2 v = vec2(0,0);
       
-      asteroids->checkIfHit(v);
+      checkCollidBulletAsteroid();
+      
+      //asteroids->checkCollideShip(&ship);
     
     glfwSwapBuffers(window);
     glfwPollEvents();

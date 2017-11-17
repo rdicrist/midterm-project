@@ -168,9 +168,17 @@ void Ship::draw(mat4 proj){
 Bullets::Bullet *Ship::fire(){
 
     return new Bullets::Bullet(state.cur_location, state.pointing);
-    
 
-  // Bullets bullet = *new Bullet (state.cur_location, state.move);
 
 }
 
+vec2 Ship::returnCurLoc(){
+    return state.cur_location;
+}
+
+//void Ship::checkCollision(){
+//    for (std::vector< Asteroids::Asteroid * >::iterator it = Asteroids::Asteroid::asteroids.begin() ; it != Asteroids::Asteroid::asteroids.end(); ++it){
+//        
+//    }
+//}
+//

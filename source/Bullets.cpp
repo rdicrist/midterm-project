@@ -12,7 +12,8 @@
 Bullets::Bullet::Bullet(vec2 loca, vec2 point){
     loc = loca;
     color = vec3(1,1,1);
-    vel = point*1.25;
+    vel = point*.75;
+    hit =false;
 }
     
     
@@ -135,6 +136,17 @@ void Bullets::update_state(){
     for(int i = 0;i<bullets.size();i++){
         bullets[i]->loc+=bullets[i]->vel;
     }
+}
+
+
+void Bullets::clean_bullets(){
+    std::vector< Bullet * > temp;
+    for (int i = 0; i < bullets.size(); i++){
+        if (!bullets[i]->hit){
+            temp.push_back(bullets[i]);
+        }
+    }
+    bullets = temp;
 }
 
 

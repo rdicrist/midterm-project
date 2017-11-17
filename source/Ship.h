@@ -80,6 +80,8 @@ public:
     
     Bullets::Bullet * fire();
     
+    vec2 returnCurLoc();
+    
 
 };
 

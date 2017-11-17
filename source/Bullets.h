@@ -18,6 +18,7 @@ public:
         vec2 vel;
         vec3 color;
         Bullet(vec2 loca, vec2 point);
+        bool hit;
     };
     
     std::vector < Bullet * > bullets;
@@ -37,6 +38,7 @@ public:
     void step(float width, float height);
     void draw(mat4 proj);
     void update_state();
+    void clean_bullets();
     
 };
 
